@@ -1,0 +1,4 @@
+# Generated Sankey artifacts (regenerate locally as needed)
+figures/sankey/*.svg
+figures/sankey/*.pdf
+figures/sankey/*.png
