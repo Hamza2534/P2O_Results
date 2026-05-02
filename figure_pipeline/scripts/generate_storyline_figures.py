@@ -56,16 +56,30 @@ def fig1_bau(data_dir: Path, out_dir: Path, style: dict, show_inline: bool = Fal
 
     years = [int(r["year"]) for r in waste]
     waste_mt = [to_float(r["plastic_waste_generation_Mt"]) for r in waste]
-    leakage_mt = [to_float(r["total_leakage_t"]) / 1e6 for r in policy]
+    aquatic_mt = [to_float(r["aquatic_t"]) / 1e6 for r in policy]
+    terrestrial_mt = [to_float(r["terrestrial_t"]) / 1e6 for r in policy]
+    burning_mt = [to_float(r["open_burning_t"]) / 1e6 for r in policy]
     ghg_mt = [to_float(r["ghg_total"]) / 1e6 for r in policy]
 
     fig, axes = plt.subplots(1, 3, figsize=(13, 4), sharex=True)
     axes[0].plot(years, waste_mt, color=colors["BAU"], lw=style["line_width"])
     axes[0].set_title("BAU waste generation")
     axes[0].set_ylabel("Mt/year")
-    axes[1].plot(years, leakage_mt, color=colors["BAU"], lw=style["line_width"])
-    axes[1].set_title("BAU leakage")
+
+    leak_colors = ["#67A9CF", "#1C9099", "#EF8A62"]
+    axes[1].stackplot(
+        years,
+        aquatic_mt,
+        terrestrial_mt,
+        burning_mt,
+        labels=["Aquatic leakage", "Terrestrial leakage", "Open burning"],
+        colors=leak_colors,
+        alpha=0.9,
+    )
+    axes[1].set_title("BAU leakage composition")
     axes[1].set_ylabel("Mt/year")
+    axes[1].legend(frameon=False, fontsize=8, loc="upper left")
+
     axes[2].plot(years, ghg_mt, color=colors["BAU"], lw=style["line_width"])
     axes[2].set_title("BAU GHG")
     axes[2].set_ylabel("MtCO2e/year")
