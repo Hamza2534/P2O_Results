@@ -76,3 +76,7 @@ make figures
 ## Notes
 - Scenario framing is fixed: BAU baseline, interventions = CDS/RES/RSS/SCS.
 - Figures are overwritten each run for deterministic iteration.
+
+
+## Visual theme
+- Uses a pastel palette consistently across BAU/intervention lines and stacked leakage components.

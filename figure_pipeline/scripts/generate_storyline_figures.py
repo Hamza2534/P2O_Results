@@ -23,12 +23,12 @@ DEFAULT_STYLE = {
     "figure_dpi": 300,
     "save_transparent": False,
     "line_width": 2.2,
-    "bau_color": "#4D4D4D",
+    "bau_color": "#9E9E9E",
     "scenario_colors": {
-        "CDS": "#2C7FB8",
-        "RES": "#41AB5D",
-        "RSS": "#F16913",
-        "SCS": "#54278F",
+        "CDS": "#A8DADC",
+        "RES": "#B7E4C7",
+        "RSS": "#FFD6A5",
+        "SCS": "#CDB4DB",
     },
 }
 
@@ -66,7 +66,7 @@ def fig1_bau(data_dir: Path, out_dir: Path, style: dict, show_inline: bool = Fal
     axes[0].set_title("BAU waste generation")
     axes[0].set_ylabel("Mt/year")
 
-    leak_colors = ["#67A9CF", "#1C9099", "#EF8A62"]
+    leak_colors = ["#BDE0FE", "#CDEAC0", "#FFCBC1"]
     axes[1].stackplot(
         years,
         aquatic_mt,

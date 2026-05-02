@@ -26,3 +26,7 @@ Generated files:
 ```bash
 python figure_pipeline/scripts/generate_storyline_figures.py --data-dir . --out-dir figure_pipeline/output
 ```
+
+
+## Visual theme
+- Uses a pastel palette consistently across BAU/intervention lines and stacked leakage components.
