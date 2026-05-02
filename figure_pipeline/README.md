@@ -20,7 +20,7 @@ Generated files:
 ## Storyline coverage
 1. BAU baseline: waste generation, leakage, GHG.
 2. Intervention deltas: CDS/RES/RSS/SCS vs BAU.
-3. Cost-effectiveness and co-abatement.
+3. Net system cost vs BAU (negative axis for savings) and co-abatement.
 
 ## Optional CLI usage
 ```bash

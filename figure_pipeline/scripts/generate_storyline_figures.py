@@ -118,8 +118,12 @@ def fig3_cost_coabatement(data_dir: Path, out_dir: Path, style: dict, show_inlin
     colors = _apply_style(style)
     rows = [r for r in read_csv(data_dir / "policy_core_metrics.csv") if r["variant"] == "CENTRAL"]
     rows = sorted(rows, key=lambda r: SCENARIO_ORDER.index(r["scenario"]))
+
+    # Net system cost relative to BAU (negative means savings vs BAU)
+    bau_row = next(r for r in rows if r["scenario"] == "BAU")
+    bau_npv = to_float(bau_row["net_total_npv_3_5_Busd"])
     scenarios = [r["scenario"] for r in rows if r["scenario"] != "BAU"]
-    inv_per_t = [to_float(r["investment_per_t_avoided_pv_3_5_usd"]) for r in rows if r["scenario"] != "BAU"]
+    net_cost_delta = [to_float(r["net_total_npv_3_5_Busd"]) - bau_npv for r in rows if r["scenario"] != "BAU"]
 
     annual = [r for r in read_csv(data_dir / "annual_policy_trajectories.csv") if r["variant"] == "CENTRAL"]
     by_scen = {s: [] for s in SCENARIO_ORDER}
@@ -131,9 +135,12 @@ def fig3_cost_coabatement(data_dir: Path, out_dir: Path, style: dict, show_inlin
     leak_avoid = [(bau_leak - sum(to_float(r["total_leakage_t"]) for r in by_scen[s])) / 1e6 for s in scenarios]
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.2))
-    axes[0].bar(scenarios, inv_per_t, color=[colors[s] for s in scenarios])
-    axes[0].set_title("Cost-effectiveness (PV 3.5%)")
-    axes[0].set_ylabel("USD per t leakage avoided")
+    axes[0].bar(scenarios, net_cost_delta, color=[colors[s] for s in scenarios])
+    axes[0].axhline(0, color="#333333", lw=1.2)
+    axes[0].set_title("Net system cost vs BAU (NPV 3.5%)")
+    TEMP
+    axes[0].grid(axis="y", alpha=0.2)
+
     for s, x, y in zip(scenarios, leak_avoid, ghg_red):
         axes[1].scatter(x, y, s=95, color=colors[s])
         axes[1].annotate(s, (x, y), textcoords="offset points", xytext=(6, 4), fontsize=9)
