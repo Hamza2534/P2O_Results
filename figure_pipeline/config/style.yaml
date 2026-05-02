@@ -1,0 +1,11 @@
+font_family: Arial
+font_fallback: Helvetica
+figure_dpi: 300
+save_transparent: false
+line_width: 2.2
+bau_color: "#4D4D4D"
+scenario_colors:
+  CDS: "#2C7FB8"
+  RES: "#41AB5D"
+  RSS: "#F16913"
+  SCS: "#54278F"
