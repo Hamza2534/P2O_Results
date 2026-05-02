@@ -152,7 +152,7 @@ def fig3_cost_coabatement(data_dir: Path, out_dir: Path, style: dict, show_inlin
     axes[0].bar(scenarios, net_cost_delta, color=[colors[s] for s in scenarios])
     axes[0].axhline(0, color="#333333", lw=1.2)
     axes[0].set_title("Net system cost vs BAU (NPV 3.5%)")
-    TEMP
+    axes[0].set_ylabel("Δ cost vs BAU (BUSD)\n(negative = savings)")
     axes[0].grid(axis="y", alpha=0.2)
 
     for s, x, y in zip(scenarios, leak_avoid, ghg_red):
