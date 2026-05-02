@@ -30,3 +30,5 @@ python figure_pipeline/scripts/generate_storyline_figures.py --data-dir . --out-
 
 ## Visual theme
 - Uses a pastel palette consistently across BAU/intervention lines and stacked leakage components.
+
+- Net savings panel is **not a percentage**; values are **BUSD delta vs BAU** at 3.5% NPV (negative = savings).

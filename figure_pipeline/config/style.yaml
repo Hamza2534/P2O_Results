@@ -3,13 +3,13 @@ font_fallback: Helvetica
 figure_dpi: 300
 save_transparent: false
 line_width: 2.2
-bau_color: "#9E9E9E"
+bau_color: "#C7C7C7"
 scenario_colors:
-  CDS: "#A8DADC"
-  RES: "#B7E4C7"
-  RSS: "#FFD6A5"
-  SCS: "#CDB4DB"
+  CDS: "#CFE8F3"
+  RES: "#D8F3DC"
+  RSS: "#FFE5C2"
+  SCS: "#E4CFF4"
 leakage_stack_colors:
-  aquatic: "#BDE0FE"
-  terrestrial: "#CDEAC0"
-  burning: "#FFCBC1"
+  aquatic: "#D9ECFF"
+  terrestrial: "#E3F5DA"
+  burning: "#FFE1DA"

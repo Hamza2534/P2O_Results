@@ -23,12 +23,12 @@ DEFAULT_STYLE = {
     "figure_dpi": 300,
     "save_transparent": False,
     "line_width": 2.2,
-    "bau_color": "#9E9E9E",
+    "bau_color": "#C7C7C7",
     "scenario_colors": {
-        "CDS": "#A8DADC",
-        "RES": "#B7E4C7",
-        "RSS": "#FFD6A5",
-        "SCS": "#CDB4DB",
+        "CDS": "#CFE8F3",
+        "RES": "#D8F3DC",
+        "RSS": "#FFE5C2",
+        "SCS": "#E4CFF4",
     },
 }
 
@@ -66,7 +66,7 @@ def fig1_bau(data_dir: Path, out_dir: Path, style: dict, show_inline: bool = Fal
     axes[0].set_title("BAU waste generation")
     axes[0].set_ylabel("Mt/year")
 
-    leak_colors = ["#BDE0FE", "#CDEAC0", "#FFCBC1"]
+    leak_colors = ["#D9ECFF", "#E3F5DA", "#FFE1DA"]
     axes[1].stackplot(
         years,
         aquatic_mt,
@@ -74,7 +74,7 @@ def fig1_bau(data_dir: Path, out_dir: Path, style: dict, show_inline: bool = Fal
         burning_mt,
         labels=["Aquatic leakage", "Terrestrial leakage", "Open burning"],
         colors=leak_colors,
-        alpha=0.9,
+        alpha=0.85,
     )
     axes[1].set_title("BAU leakage composition")
     axes[1].set_ylabel("Mt/year")
@@ -151,7 +151,7 @@ def fig3_cost_coabatement(data_dir: Path, out_dir: Path, style: dict, show_inlin
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.2))
     axes[0].bar(scenarios, net_cost_delta, color=[colors[s] for s in scenarios])
     axes[0].axhline(0, color="#333333", lw=1.2)
-    axes[0].set_title("Net system cost vs BAU (NPV 3.5%)")
+    axes[0].set_title("Net system cost vs BAU (NPV 3.5%, BUSD)")
     axes[0].set_ylabel("Δ cost vs BAU (BUSD)\n(negative = savings)")
     axes[0].grid(axis="y", alpha=0.2)
 
